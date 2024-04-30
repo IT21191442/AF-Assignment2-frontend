@@ -9,7 +9,6 @@ const MarsRover = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [photosPerPage] = useState(8);
   const [selectedDate, setSelectedDate] = useState("");
-  const [selectedRover, setSelectedRover] = useState("curiosity");
 
   useEffect(() => {
     const fetchRoverPhotos = async () => {
@@ -18,7 +17,7 @@ const MarsRover = () => {
 
       try {
         const response = await axios.get(
-          `https://api.nasa.gov/mars-photos/api/v1/rovers/${selectedRover}/photos`,
+          `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos`,
           {
             params: {
               earth_date: selectedDate || "2023-04-23",
@@ -36,7 +35,7 @@ const MarsRover = () => {
     };
 
     fetchRoverPhotos();
-  }, [selectedDate, selectedRover]);
+  }, [selectedDate]);
 
   // Get current photos
   const indexOfLastPhoto = currentPage * photosPerPage;
@@ -74,9 +73,8 @@ const MarsRover = () => {
         <Link to="/" className="text-gray-100 font-bold mb-2">
           <i className="bi bi-arrow-left"></i> Back
         </Link>
-        </div>
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
         <h2 className="text-3xl font-bold text-gray-100 mb-6">
           Mars Rover Photos
         </h2>
