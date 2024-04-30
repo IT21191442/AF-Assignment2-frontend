@@ -6,7 +6,7 @@ import APOD from "./components/APOD";
 import CME from "./components/CME";
 
 function App() {
-	const user = localStorage.getItem("token");
+	
 
 	return (
 		<Routes>
